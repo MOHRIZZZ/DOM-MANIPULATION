@@ -61,5 +61,83 @@ let headermain =document.getElementById('main-header');
 headermain.style.borderBottom = "solid 3px red";
 
 
+//GetELEMENTSBYCLASSNAME
+//PLURAL 
+let item = document.getElementsByClassName('list-group-item');
+console.log(item);
+//so it give me htmlcollection in an array-like list
+//now i can also get by array index
+console.log(item[2]);
+//can change it now
+item[2].innerText = 'hellos2';
+item[2].style.fontWeight = 'bold';
+item[2].style.backgroundColor = 'yellow';
+
+//so html collection is array so cant apply to them direlcty
+//give error
+//item.style.backgroundColor = 'yellow';
+
+//now loop and then do it 
+for(let i =0;i<item.length;i++){
+    item[i].style.backgroundColor ='yellow';
+}
 
 
+//getElementbyTAGNAME
+//work same just get tag 
+let li = document.getElementsByTagName('li');
+console.log(li);
+
+for(let i =0;i<li.length;i++){
+    li[i].style.backgroundColor ='grey';
+}
+
+//queryselector only grab single adn frist one 
+let header = document.querySelector('#main-header');
+header.style.borderBottom = 'solid 3px red';
+header.innerHTML= '<h2>Items</h2>';
+
+//grab input first one 
+var input = document.querySelector('input');
+input.value ="Hellos Johnwick";
+
+//now we get tag input but sepcific atrtubute so [] this is use
+var sumbit =document.querySelector('input[type="submit"]');
+sumbit.value = "Send";
+
+//we put class so dot .
+//first one by defualt
+let itm = document.querySelector('.list-group-item');
+itm.style.color = 'red';
+
+//pseduo slectors are : this cna be of posstion,user  or form 
+
+//end child 
+//.class : last-child
+let lastitm = document.querySelector('.list-group-item:last-child');
+lastitm.style.color = 'blue';
+
+//nth child 
+//.class : nth-child()
+let nthitm = document.querySelector('.list-group-item:nth-child(2)');
+nthitm.style.color = 'pink';
+
+
+// query selectorall // anything you can put
+//grabs more than one 
+
+let title =document.querySelectorAll('.title');
+console.log(title);
+
+//returns nodelist so you can run araryfucntion
+title[1].textContent = 'POPO';
+
+//so now loop more 
+let odditem = document.querySelectorAll('li:nth-child(odd)');
+//can do fore even as well
+let evenitem = document.querySelectorAll('li:nth-child(even)');
+
+for(let i=0;i < odditem.length; i++){
+odditem[i].style.backgroundColor = 'grey';
+evenitem[i].style.backgroundColor = 'white';
+}
