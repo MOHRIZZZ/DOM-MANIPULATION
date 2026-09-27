@@ -1,0 +1,250 @@
+// //DOM
+
+// //prints all the properties of the document object in the console
+// // console.dir(document);
+
+// console.log(document.domain);
+// //gives domain name of the document
+// console.log(document.URL);
+// //gives the URL of the document
+
+// console.log(document.title);
+// //gives the title of the document
+
+// //can change as well 
+// // document.title = "123";
+
+// //gives the doctype of the document
+// console.log(document.doctype);
+// console.log(document.head);
+// //gives the head of the document
+// console.log(document.body);
+// //gives the body of the document
+
+// console.log([document.querySelectorAll('*')]);
+// //gives all the elements of the document in an array like object
+// console.log(document.all[10]);
+// //gives the 10th element of the document
+
+// //document.all[10].textContent = "Hello";
+// //changes the text content of the 10th element of the document
+
+
+// //if i want forms on page so
+// console.log(document.forms );
+// //for links 
+// console.log(document.links);
+
+// //images
+// console.log(document.images);
+
+
+// //Selecters for id 
+// //getelementbyid
+// console.log(document.getElementById('header-title'));
+
+// //you can also equal it to a var
+// let headertitle = document.getElementById('header-title');
+// console.log(headertitle);
+
+// //on this var you can now add property
+// headertitle.textContent = 'hAllo';
+// //same stuff by innerText- pays attention to styling
+// headertitle.innerText = 'Goodbye';
+
+// //you can add html from here as well 
+// //it puts it inside
+// headertitle.innerHTML = '<h2>Nigger</h2>';
+
+// //style changes as well 
+// let headermain =document.getElementById('main-header');
+// headermain.style.borderBottom = "solid 3px red";
+
+
+// //GetELEMENTSBYCLASSNAME
+// //PLURAL 
+// let item = document.getElementsByClassName('list-group-item');
+// console.log(item);
+// //so it give me htmlcollection in an array-like list
+// //now i can also get by array index
+// console.log(item[2]);
+// //can change it now
+// item[2].innerText = 'hellos2';
+// item[2].style.fontWeight = 'bold';
+// item[2].style.backgroundColor = 'yellow';
+
+// //so html collection is array so cant apply to them direlcty
+// //give error
+// //item.style.backgroundColor = 'yellow';
+
+// //now loop and then do it 
+// for(let i =0;i<item.length;i++){
+//     item[i].style.backgroundColor ='yellow';
+// }
+
+
+// //getElementbyTAGNAME
+// //work same just get tag 
+// let li = document.getElementsByTagName('li');
+// console.log(li);
+
+// for(let i =0;i<li.length;i++){
+//     li[i].style.backgroundColor ='grey';
+// }
+
+// //queryselector only grab single adn frist one 
+// let header = document.querySelector('#main-header');
+// header.style.borderBottom = 'solid 3px red';
+// header.innerHTML= '<h2>Items</h2>';
+
+// //grab input first one 
+// var input = document.querySelector('input');
+// input.value ="Hellos Johnwick";
+
+// //now we get tag input but sepcific atrtubute so [] this is use
+// var sumbit =document.querySelector('input[type="submit"]');
+// sumbit.value = "Send";
+
+// //we put class so dot .
+// //first one by defualt
+// let itm = document.querySelector('.list-group-item');
+// itm.style.color = 'red';
+
+// //pseduo slectors are : this cna be of posstion,user  or form 
+
+// //end child 
+// //.class : last-child
+// let lastitm = document.querySelector('.list-group-item:last-child');
+// lastitm.style.color = 'blue';
+
+// //nth child 
+// //.class : nth-child()
+// let nthitm = document.querySelector('.list-group-item:nth-child(2)');
+// nthitm.style.color = 'pink';
+
+
+// // query selectorall // anything you can put
+// //grabs more than one 
+
+// let title =document.querySelectorAll('.title');
+// console.log(title);
+
+// //returns nodelist so you can run araryfucntion
+// title[1].textContent = 'POPO';
+
+// //so now loop more 
+// let odditem = document.querySelectorAll('li:nth-child(odd)');
+// //can do fore even as well
+// let evenitem = document.querySelectorAll('li:nth-child(even)');
+
+// for(let i=0;i < odditem.length; i++){
+// odditem[i].style.backgroundColor = 'grey';
+// evenitem[i].style.backgroundColor = 'white';
+// }
+
+
+//2nd class so yeah 
+//traverseing the dom 
+var itemlist =document.querySelector('#items');
+//parent node properties
+console.log(itemlist.parentNode);
+//somthing which it is insdie is the parent
+itemlist.parentNode.style.backgroundColor ='grey';
+
+//we can chain stuff
+console.log(itemlist.parentNode.parentNode.parentNode);
+//so item in div in div in body so like this
+
+//PARENT ELEMENT SAME STUFF
+/* except node do parentelement
+*/
+console.log(itemlist.parentElement);
+itemlist.parentElement.style.backgroundColor ='orange';
+console.log(itemlist.parentElement.parentElement.parentElement);
+
+// CHILDNODES //
+console.log(itemlist.childNodes);
+//problem it also give text  which is line break
+
+//children
+console.log(itemlist.children);
+//no line break shit so good
+//also html collection only 
+
+//access specific                 
+console.log(itemlist.children[1]);
+itemlist.children[1].style.backgroundColor = 'yellow';
+
+//FIRSTCHILD -USELESS
+console.log(itemlist.firstChild);
+//fuck this
+
+//soln
+//firstelementchild
+console.log(itemlist.firstElementChild);
+itemlist.firstElementChild.style.backgroundColor = 'pink';
+
+//LASTCHILD -USELESS
+console.log(itemlist.lastChild);
+//fuck this
+
+//soln
+//lastelementchild
+console.log(itemlist.lastElementChild);
+itemlist.lastElementChild.style.backgroundColor = 'pink';
+itemlist.lastElementChild.style.fontWeight = 'bold';
+
+
+//SIBLINGS 
+
+//NEXTSIBLINGS
+//same shit as firstchild
+console.log(itemlist.nextSibling);
+
+//nextelementsibling
+console.log(itemlist.nextElementSibling);
+
+//previous sibling
+console.log(itemlist.previousSibling);
+
+//previouselementsibling
+console.log(itemlist.previousElementSibling);
+itemlist.previousElementSibling.style.color = 'red';
+ 
+
+//CREATE AND INSERT ELEMENTS 
+
+//create element 
+//crt div
+let newdiv = document.createElement('div');
+
+//add a class
+newdiv.className = 'container';
+
+//add a id 
+newdiv.id = 'hello1';
+
+//add an attribute
+//first name ,sec is value
+newdiv.setAttribute('title','hellodiv');
+
+//to add content in here so 
+//creat text node
+let divtext = document.createTextNode('hey how have ypou been so i am here in js and i have been made a new textnode and have been assigned to a new avribela nd will be apapened eto teh div taht was made ');
+//now append it to the newdiv
+newdiv.appendChild(divtext);
+//it all exist in js not in DOM SO 
+
+//so we put it in header container
+let container = document.querySelector('header .container');
+let h1 = document.querySelector('header h1');
+
+newdiv.style.fontSize= '15px';
+//so this does what is sya and 2 parameter
+//as one what you insert 
+//2nd what before you wnat it to put in ahhhhhh
+container.insertBefore(newdiv,h1);
+
+
+
+
