@@ -1,0 +1,65 @@
+//DOM
+
+//prints all the properties of the document object in the console
+// console.dir(document);
+
+console.log(document.domain);
+//gives domain name of the document
+console.log(document.URL);
+//gives the URL of the document
+
+console.log(document.title);
+//gives the title of the document
+
+//can change as well 
+// document.title = "123";
+
+//gives the doctype of the document
+console.log(document.doctype);
+console.log(document.head);
+//gives the head of the document
+console.log(document.body);
+//gives the body of the document
+
+console.log([document.querySelectorAll('*')]);
+//gives all the elements of the document in an array like object
+console.log(document.all[10]);
+//gives the 10th element of the document
+
+//document.all[10].textContent = "Hello";
+//changes the text content of the 10th element of the document
+
+
+//if i want forms on page so
+console.log(document.forms );
+//for links 
+console.log(document.links);
+
+//images
+console.log(document.images);
+
+
+//Selecters for id 
+//getelementbyid
+console.log(document.getElementById('header-title'));
+
+//you can also equal it to a var
+let headertitle = document.getElementById('header-title');
+console.log(headertitle);
+
+//on this var you can now add property
+headertitle.textContent = 'hAllo';
+//same stuff by innerText- pays attention to styling
+headertitle.innerText = 'Goodbye';
+
+//you can add html from here as well 
+//it puts it inside
+headertitle.innerHTML = '<h2>Nigger</h2>';
+
+//style changes as well 
+let headermain =document.getElementById('main-header');
+headermain.style.borderBottom = "solid 3px red";
+
+
+
+
