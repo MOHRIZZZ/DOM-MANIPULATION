@@ -1,0 +1,240 @@
+//DOM
+
+//prints all the properties of the document object in the console
+// console.dir(document);
+
+console.log(document.domain);
+//gives domain name of the document
+console.log(document.URL);
+//gives the URL of the document
+
+console.log(document.title);
+//gives the title of the document
+
+//can change as well 
+// document.title = "123";
+
+//gives the doctype of the document
+console.log(document.doctype);
+console.log(document.head);
+//gives the head of the document
+console.log(document.body);
+//gives the body of the document
+
+console.log([document.querySelectorAll('*')]);
+//gives all the elements of the document in an array like object
+console.log(document.all[10]);
+//gives the 10th element of the document
+
+//document.all[10].textContent = "Hello";
+//changes the text content of the 10th element of the document
+
+
+//if i want forms on page so
+console.log(document.forms );
+//for links 
+console.log(document.links);
+
+//images
+console.log(document.images);
+
+
+//Selecters for id 
+//getelementbyid
+console.log(document.getElementById('header-title'));
+
+//you can also equal it to a var
+let headertitle = document.getElementById('header-title');
+console.log(headertitle);
+
+//on this var you can now add property
+headertitle.textContent = 'hAllo';
+//same stuff by innerText- pays attention to styling
+headertitle.innerText = 'Goodbye';
+
+//you can add html from here as well 
+//it puts it inside
+headertitle.innerHTML = '<h2>ITEMS LIST</h2>';
+
+//style changes as well 
+let headermain =document.getElementById('main-header');
+headermain.style.borderBottom = "solid 3px red";
+
+
+//3rd classs//
+//but not good practise do this clickevenlistener
+let btn = document.getElementById('button').addEventListener(
+    'click',buttonclick
+);
+
+//EVENT STUFF SO EVENT LISTENER/HANDLER = IN HTML
+//EVENT FUNCTION/CALLBACK = IN JS 
+//now parameter e can be used for more stuff 
+
+function buttonclick(e){
+ console.log("button has been clicked so yes");
+ //can add more stuff
+ document.getElementById('header-title').innerText = 'Button is clicked (0.0)';
+document.getElementById('main').style.backgroundColor = 'pink';
+console.log(e);
+
+
+//The event object now 
+
+//this return the id or naything taht you put in queryslector adn made funtion of 
+console.log(e.target);
+
+//gives id 
+console.log(e.target.id);
+
+//gives className whole string
+console.log(e.target.className);
+
+
+//gives all className as a list
+console.log(e.target.classList);
+
+//this shit wont work so yeah ignore
+let output = document.getElementById('output');
+
+output.innerHTML='<h2>'+ e.target.id +'</h2>';
+
+
+//type of event it gives
+console.log(e.type);
+
+//it gives the postion from browser
+console.log(e.clientX);
+console.log(e.clientY);
+
+//gives postion from the elementitslf
+console.log(e.offsetX);
+console.log(e.offsetY);
+
+//if you didnot press btn + click so 
+//can do if and scirpt
+console.log(e.altKey);
+console.log(e.ctrlKey);
+console.log(e.shiftKey);
+}
+
+
+//Mouse events or mouse action
+
+//same syntax 
+//  let abtn =document.querySelector('button').addEventListener(
+//     'click',msaction
+//  );
+//or this is same shit 
+ let abtn =document.querySelector('button');
+//  abtn.addEventListener('click',msaction);
+
+//will work when dbclick
+abtn.addEventListener('dblclick',msaction);
+
+//will work when mousedown and mouseup 
+abtn.addEventListener('mouseup',msaction);
+abtn.addEventListener('mousedown',msaction);
+
+ function msaction(e){
+   console.log("Event type:"+e.type);
+     
+ }
+
+ //Advacned events 
+
+ let box = document.getElementById('box');
+
+ //now so enter so gives in console
+ box.addEventListener('mouseenter',rnevent);
+//mouse leave will be when i get out of elemnt 
+box.addEventListener('mouseleave',rnevent);
+
+
+//now for inner element mouseover & mouseout
+box.addEventListener('mouseover',rnevent);
+box.addEventListener('mouseout',rnevent);
+
+
+//mousemove when i am in it 
+box.addEventListener('mousemove',rnevent);
+
+function rnevent(e){
+  console.log('Eventtype :'+ e.type);
+
+//from mousemove we can grab position 
+//and do stuff with it 
+  output.innerHTML ='<h3>MouseX:'+e.offsetX +'</h3>'+'<h3>MouseY:'+e.offsetY +'</h3>' 
+ 
+
+//now we gonna use this same offset adn change color
+ box.style.backgroundColor = "rgb("+e.offsetX+","+e.offsetY+",30)";
+//and can also change body color
+ document.body.style.backgroundColor = "rgb("+e.offsetX+","+e.offsetY+",30)"; 
+}
+
+//keyboard and input events
+let iteminput = document.querySelector('input[type="text"');
+
+
+//so when i type so it tells
+//so keydown when i get out it happen
+//and also keypress
+iteminput.addEventListener('keydown',keyevent);
+iteminput.addEventListener('keyup',keyevent);
+iteminput.addEventListener('keypress',keyevent);
+
+//some for focus and blur
+iteminput.addEventListener('focus',keyevent);
+iteminput.addEventListener('blur',keyevent);
+
+//you cut or paste so yeah
+iteminput.addEventListener('cut',keyevent);
+iteminput.addEventListener('paste',keyevent);
+
+//anything you do with input
+iteminput.addEventListener('input',keyevent);
+
+function keyevent(e){
+    console.log("The event which is happeing inside of me is :"+e.type);  
+   //this will log the values
+    console.log(e.target.value);
+   
+    //and if i wnat to print this so 
+    //do this 
+    document.getElementById('output').innerHTML = "<p>"+e.target.value+"</p>"
+  
+
+
+
+
+}
+
+
+//select and change events
+//willwork for both my hadns fucking hurt
+let select = document.querySelector('select');
+select.addEventListener("change",schange);
+select.addEventListener("input",schange);
+
+function schange(s){
+    console.log("Event type:"+s.type);
+    console.log("value :"+s.target.value);
+
+}
+
+//Form /action:sumbit 
+let form = document.querySelector('form');
+ form.addEventListener('sumbit',sumbit)                  
+
+ function sumbit(e){
+    //not work as it does sumbit so stop it
+    //preventdefault - is a fuckinf function
+    e.preventDefault();
+  console.log("Event type:"+e.type);
+ }
+
+
+
+
+
